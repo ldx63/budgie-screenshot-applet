@@ -129,7 +129,9 @@ public abstract class ScreenshotAbstract
         }
 
         GLib.DateTime datetime = new GLib.DateTime.now_local();
-        string filename = _("Screenshot from %s").printf(datetime.format("%Y-%m-%d %H:%M:%S")) + ".png";
+        // Modified by Aldo to make filename more NTFS-friendly (no ":")
+        //string filename = _("Screenshot from %s").printf(datetime.format("%Y-%m-%d %H:%M:%S")) + ".png";
+        string filename = _("Screenshot from %s").printf(datetime.format("%Y-%m-%d-%H-%M-%S")) + ".png";
 
         save_path = @"$save_path/$filename";
 
